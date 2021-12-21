@@ -1,1 +1,1 @@
-# rule-based-with-customer-segmentation
+# rule-based-customer-segmentation
