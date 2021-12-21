@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 
 ###############################################
-# Görev 1: Aşağıdaki soruları yanıtlayınız.
+# Veri setini inceleyelim.
 ###############################################
 
 ##: Soru 1: persona.csv dosyasını okutunuz ve veri seti ile ilgili genel bilgileri gösteriniz.
@@ -36,54 +36,54 @@ def check_df(dataframe, head=5, tail=5):
 
 check_df(df)
 
-## Soru 2: Kaç unique SOURCE vardır? Frekansları nedir?
+## Kaç unique SOURCE vardır? Frekansları nedir?
 df["SOURCE"].nunique()
 df["SOURCE"].value_counts()
 
-## Soru 3: Kaç unique PRICE vardır?
+## Kaç unique PRICE vardır?
 df["PRICE"].nunique()
 df["PRICE"].unique()
 
-## Soru 4: Hangi PRICE'dan kaçar tane satış gerçekleşmiş?
+## Hangi PRICE'dan kaçar tane satış gerçekleşmiş?
 df["PRICE"].value_counts()
 
-## Soru 5: Hangi ülkeden kaçar tane satış olmuş?
+## angi ülkeden kaçar tane satış olmuş?
 df["COUNTRY"].value_counts()
 df.groupby(["COUNTRY"])["PRICE"].count().reset_index()
 
-## Soru 6: Ülkelere göre satışlardan toplam ne kadar kazanılmış?
+## Ülkelere göre satışlardan toplam ne kadar kazanılmış?
 df.groupby(["COUNTRY"])["PRICE"].sum().reset_index()
 #: OR
 df.groupby(["COUNTRY"]).agg({"PRICE": "sum"}).reset_index()
 
-## Soru 7: SOURCE türlerine göre göre satış sayıları nedir?
+## SOURCE türlerine göre göre satış sayıları nedir?
 df["SOURCE"].value_counts()
 
-## Soru 8: Ülkelere göre PRICE ortalamaları nedir?
+## Ülkelere göre PRICE ortalamaları nedir?
 df.groupby(["COUNTRY"])["PRICE"].mean().reset_index()
 #: OR
 df.groupby(["COUNTRY"]).agg({"PRICE": "mean"}).reset_index()
 
 
-## Soru 9: SOURCE'lara göre PRICE ortalamaları nedir?
+## SOURCE'lara göre PRICE ortalamaları nedir?
 df.groupby(["SOURCE"])["PRICE"].mean().reset_index()
 #: OR
 df.groupby(["SOURCE"]).agg({"PRICE": "mean"}).reset_index()
 
-## Soru 10: COUNTRY-SOURCE kırılımında PRICE ortalamaları nedir?
+## COUNTRY-SOURCE kırılımında PRICE ortalamaları nedir?
 df.groupby(["COUNTRY", "SOURCE"])["PRICE"].mean().reset_index()
 #: OR
 df.groupby(["COUNTRY", "SOURCE"]).agg({"PRICE": "mean"}).reset_index()
 
 ###############################################
-# Görev 2: COUNTRY, SOURCE, SEX, AGE kırılımında ortalama kazançlar nedir?
+# COUNTRY, SOURCE, SEX, AGE kırılımında ortalama kazançlar nedir?
 ###############################################
 col_list = ["COUNTRY", "SOURCE", "SEX", "AGE"]
 df.groupby(col_list)["PRICE"].mean()
 df.groupby(col_list).agg({"PRICE": "mean"})
 
 ###############################################
-# Görev 3: Çıktıyı PRICE’a göre sıralayınız.
+# Çıktıyı PRICE’a göre sıralayınız.
 ###############################################
 #: Önceki sorudaki çıktıyı daha iyi görebilmek için sort_values metodunu azalan olacak şekilde PRICE’a göre uygulayınız.
 #: Çıktıyıagg_df olarak kaydediniz.
@@ -92,7 +92,7 @@ col_list = ["COUNTRY", "SOURCE", "SEX", "AGE"]
 agg_df = df.groupby(col_list).agg({"PRICE": "mean"}).sort_values("PRICE", ascending=False)
 
 ###############################################
-# Görev 4: Index’te yer alan isimleri değişken ismine çeviriniz.
+# Index’te yer alan isimleri değişken ismine çeviriniz.
 ###############################################
 #: Üçüncü sorunun çıktısında yer alan price dışındaki tüm değişkenler index isimleridir.
 #: Bu isimleri değişken isimlerine çeviriniz.
@@ -102,7 +102,7 @@ agg_df = agg_df.reset_index()
 agg_df.reset_index(inplace=True)
 
 ###############################################
-# Görev 5: age değişkenini kategorik değişkene çeviriniz ve agg_df’e ekleyiniz.
+# age değişkenini kategorik değişkene çeviriniz ve agg_df’e ekleyiniz.
 ###############################################
 #: Age sayısal değişkenini kategorik değişkene çeviriniz.
 #: Aralıkları ikna edici şekilde oluşturunuz.
@@ -131,7 +131,7 @@ label_list = ["0_18", "19_23", "24_30", "31_40", "41_66"]
 agg_df["AGE_CAT"] = pd.cut(agg_df["AGE"], bins=bin_list, labels=label_list)
 
 ###############################################
-# Görev 6: Yeni seviye tabanlı müşterileri (persona) tanımlayınız.
+# Yeni seviye tabanlı müşterileri (persona) tanımlayınız.
 ###############################################
 #: Yeni seviye tabanlı müşterileri (persona) tanımlayınız ve veri setine değişken olarak ekleyiniz. 
 #: Yeni eklenecek değişkenin adı: customers_level_based
@@ -147,7 +147,7 @@ agg_df = agg_df.groupby(["customers_level_based"]).agg({"PRICE": "mean"}).reset_
 
 
 ###############################################
-# Görev 7: Yeni müşterileri (personaları) segmentlere ayırınız.
+# Yeni müşterileri (personaları) segmentlere ayırınız.
 ###############################################
 #: Yeni müşterileri (Örnek: USA_ANDROID_MALE_0_18) PRICE’a göre 4 segmente ayırınız.
 #: Segmentleri SEGMENT isimlendirmesi ile değişken olarak agg_df’e ekleyiniz.
@@ -162,7 +162,7 @@ segment_c = segment_analiz[segment_analiz["SEGMENT"] == "C"]
 
 
 ###############################################
-# Görev 8: Yeni gelen müşterileri segmentlerine göre sınıflandırınız ve ne kadar gelir getirebileceğini tahmin ediniz.
+# Yeni gelen müşterileri segmentlerine göre sınıflandırınız ve ne kadar gelir getirebileceğini tahmin ediniz.
 ###############################################
 
 def customer_mean_price(df: pd.DataFrame, new_user: str) -> float:
