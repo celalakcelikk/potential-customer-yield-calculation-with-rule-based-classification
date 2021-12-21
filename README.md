@@ -1,1 +1,1 @@
-# Lead Calculation with Rule-Based Segmentation
+# Rule-Based Customer Segmentation
