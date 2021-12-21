@@ -1,4 +1,4 @@
-# Potential Customer Calculation with Rule Based Classification (Kural Tabanlı Sınıflandırma ile Potansiyel Müşteri Getirisi Hesaplama)
+# Potential Customer Yield Calculation with Rule Based Classification (Kural Tabanlı Sınıflandırma ile Potansiyel Müşteri Getirisi Hesaplama)
 ![alt text](https://github.com/celalakcelikk/rule-based-customer-segmentation/blob/main/media/Servant-Leadership.png)
 ## İş Problemi
 Bir oyun şirketi müşterilerinin bazı özelliklerini kullanarak seviye tabanlı (level based) yeni müşteri tanımları (persona) oluşturmak ve bu yeni müşteri tanımlarına göre segmentler oluşturup bu segmentlere göre yeni gelebilecek müşterilerin şirkete ortalama ne kadar kazandırabileceğini tahmin etmek istemektedir.
