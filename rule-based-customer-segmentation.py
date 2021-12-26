@@ -107,7 +107,8 @@ agg_df.reset_index(inplace=True)
 #: Age sayısal değişkenini kategorik değişkene çeviriniz.
 #: Aralıkları ikna edici şekilde oluşturunuz.
 #: Örneğin: ‘0_18', ‘19_23', '24_30', '31_40', '41_70'
-
+#: Dikkat! List comprehension ile customers_level_based değerleri oluşturulduktan sonra bu değerlerin tekilleştirilmesi gerekmektedir. 
+#: Örneğin birden fazla şu ifadeden olabilir: USA_ANDROID_MALE_0_18. Bunları groupby'a alıp price ortalamalarını almak gerekmektedir.
 def age_cut(x):
     if 0 < x["AGE"] <= 18:
         return "0_18"
