@@ -5,7 +5,7 @@ import pandas as pd
 # Veri setini inceleyelim.
 ###############################################
 
-##: Soru 1: persona.csv dosyasını okutunuz ve veri seti ile ilgili genel bilgileri gösteriniz.
+##: persona.csv dosyasını okutunuz ve veri seti ile ilgili genel bilgileri gösteriniz.
 df = pd.read_csv("datasets/persona.csv")
 
 def check_df(dataframe, head=5, tail=5):
